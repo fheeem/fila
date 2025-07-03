@@ -1,0 +1,702 @@
+@charset "utf-8";
+
+/* 탑 배너  */
+
+#wrapper{
+    position: relative;
+    /* 문법의미:위치기준으로 설정 
+    사용이유/목적/결과:탑배너의 x버튼을 탑배너 영역 오른쪽 상단에 배치할때 위치기준으로 사용하기 위해 */
+    min-width: 1440px;
+    /* 본문 컨텐츠의 안전사이즈:1440px
+       wrapper의 기본 너비값은 body태그의 너비값에 의해 정해짐.
+       body태그의 너비값은 브라우저 폭에 의해 정해짐. 
+       브라우저가 좁아질 경우 wrapper의 폭도 좁아지면서 컨텐츠의 정렬, 배경색, 테두리 등에 영향을 끼침.
+       최소너비값을 지정해두면 브라우저 폭이 줄어들어도 wrapper의 너비값은 1440px로 고정
+       브라우저의 폭이 늘어날때는 wrapper의 너비도 같이 늘어남. */
+}
+
+#topbenner{
+    position: relative;
+    height: 40px;
+    background-color: #002053
+}
+#topbenner .content a{
+    display: block;
+    width: 600px;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 40px;
+    text-align: center;
+}
+#topbenner .btnClose{
+    position: absolute;
+    top: 4px;
+    right: 40px;
+}
+#topbenner .btnClose button{
+    width: 32px;
+    height: 32px;
+    border: 0;
+    text-indent: -99999px;
+    background-color: transparent;
+    /* 공간은 그대로, 글자내용만 화면의 왼쪽으로 이동됨. 값을 크게 만들어 어떤 크기의 화면에서도 보이지 않게 만듬 */
+    background-image: url(../img/btn_x_wh_32x32.png);
+}
+
+
+
+/* 헤더 영역 */
+
+#header{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    /* box-sizing은 width속성의 범위 기준을 결정하는 속성. 
+    {box-sizing:content-box;}
+    width값의 범위가 여백과 테두리를 제외하고 실제 내용이 처리될 수 있는 공간을 가리킴.  {box-sizing:border-box;}witdh값의 범위가 테두리 끝에서 끝까지 인식됨.너비값으로 지정된 범위 안에서 테두리와 여백이 표현되고, 컨텐츠는 테두리와 여백이 표현된 나머지 영역에 맞춰 작성됨.*/
+    width: 100%;
+    height: 100px;
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index: 500;
+}
+#header .logo a{
+    display: block;
+    width: 100px;
+    height: 32px;
+    text-indent: -999999px;
+    background-image: url(../img/logo_nv.png);
+}
+.gnb{
+    display: flex;
+}
+.gnb ul{
+    display: flex;
+    gap: 32px;
+}
+/* 화면을 장식하는 요소를 위해 html에 태그를 만들 수 있지만, html입장에서보면 의미없는 태그가 만들어지는 것과 같음.
+이때는 css에서 가상태그를 활용하면 됨.
+각 블럭요소 태그는 2개의 가상태그를 가질 수 있음. 
+선택자 ::before =>선택자의 첫째 자식요소로 인식되는 가상태그 
+선택자 ::after => 선택자의 막내 자식요소로 인식되는 가상태그
+ 가상태그를 사용하기위해서는 content속성이 필수로 있어야함. 여기서는 공간만 필요한 상태니 content속성의 값을 공백처리함 
+ 가상태는 인라인요소의 성징을 가짐.
+ 공간을 처리하기위해 태그 성질을 block으로 처리해야함.(여기서는 display속성을 지워도 공간을 표시해줌->flex의 영향 때문임*/
+.gnb .g1::after{
+    content: "";
+    width: 1px;
+    height: 12px;
+    display: block;
+    margin-top: 7px;
+    margin-right: 32px;
+    background-color: rgb(255, 255, 255);
+}
+.gnb li a{
+    font-size: 18px;
+    font-weight: 700px; 
+    color: #fff;
+}
+#header .icons ul{
+    display: flex;
+}
+#header .icons .cart{
+    position: relative;
+}
+
+#header .icons li a, #header .icons li button{
+    display: block;
+    width: 56px;
+    height: 56px;
+    border: 0px solid #333;
+    text-indent: -99999px;
+}
+#header .icons .location{
+    background-image: url(../img/ico-store-wh-56x56.png);
+}
+#header .icons .search button{
+    border: 0;
+    background-color: transparent;
+    background-image: url(../img/ico-search-wh-56x56.png);
+}
+#header .icons .login a{
+    background-image: url(../img/ico-mypage-wh-56x56.png);
+}
+#header .icons .cart a{
+    background-image: url(../img/ico-cart-wh-56x56.png);
+}
+#header .icons .cart .count{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #002053;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+
+/* 본문 공통 */
+
+
+
+.mainHero .mainSlides .slide .slideimg a{
+    background-image: url(../img/main11.jpg);
+
+}
+
+#container{
+    gap: 160px;
+    display: flex;
+    flex-direction: column;       
+}
+.titleText{
+    margin-bottom: 40px;
+    font-size: 36px;
+    text-align: center;
+}
+.btnMore{
+    width: 120px;
+    margin: 0 auto;
+}
+.btnMore a{
+    display: block;
+    border: 1px solid darkgoldenrod;
+    border-radius: 20px;
+    line-height: 38px;
+    color: #121212;
+    text-align: center;
+}
+/* 본문1 */
+.mainHero{
+    position: relative;
+}
+.mainHero .slide{
+    position: relative;
+    overflow: hidden;
+}
+.mainHero .slideimg{
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mainSlides{
+    position: relative;
+    
+}
+
+.mainHero .slideimg img{
+    margin-left: -240px;
+}
+.mainHero .slideText{
+    bottom: 169px;
+    position: absolute;
+    left: 50%;
+    margin-left: -720px;
+}
+.mainHero .slideText .slideTitle{
+    margin-bottom: 8px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+.slideText a{
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 25px;
+    padding: 0 40px;
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+}
+
+/* #header .icons .location{
+    width: 56px;
+    height: 56px;
+    border: 0;
+    background-color: transparent;
+    background-image: url(../img/ico-store-nv-56x56.png);
+}
+.icons .search button{
+    background-image: url(../img/ico-search-nv-56x56.png);
+    border: 0;
+    background-color: transparent;
+    width: 56px;
+    height: 56px;
+}
+.icon .login li{
+    background-image: url(../img/ico-mypage-nv-56x56.png);
+    border: 0;
+    background-color: transparent;
+    width: 56px;
+    height: 56px;
+} */
+
+.mainHero .mainSlidesController{
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    margin-left: -720px;
+    width:1440px;
+    display: flex;
+}
+
+
+
+.mainSlidesController{
+    width: 40px;
+    height: 40px;
+}
+
+
+.mainHero .mainPager ul{
+    display: flex;
+}
+
+
+.mainHero .mainPager li{
+    width: 16.66%;
+    opacity: 0.1;
+}
+.mainPager{
+    flex: 1;
+}
+
+.mainHero .mainPager .active{
+    opacity: 1;
+}
+
+
+.mainHero .mainPager li button{
+    width: 100%;
+    height: 40px;
+}
+
+
+
+.mainHero .mainPager li button span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    text-indent: -999999px;
+}
+
+
+
+.mainHero .btnPrev{
+    width: 40px;
+    margin-right: 2px;
+    /* 플랙스 아이템의 너비값을 플랙시블(유연한)하게 만들어줌. 현재 오른쪽에 배친된 이전/다음버튼의 너비값과 버튼 사이의 간격값이 px로 정해진 값이 있음.
+    flex:1값을 적용하게되면 자신의 너비값으로 사용하도록 만들 수 있음. */
+}  
+
+
+
+.mainHero .btnPrev{
+    margin-right: 2px;
+    width: 40px;
+}
+
+
+.mainHero .btnNext{
+    width: 40px;
+}
+
+
+.mainHero .btnPrev button, .mainHero .btnNext button{
+    width: 40px;
+    height: 40px;
+    text-indent: -9999999999px;
+}
+
+
+.mainHero .btnPrev button{
+    background-image: url(../img/btn_prev_wh_40x40.png);
+}
+
+
+.mainHero .btnNext button{
+    background-image: url(../img/btn_next_wh_40x40.png);
+}
+
+/* 본문2- 지금 많이 찾는 상품*/
+
+ 
+.main2 .titleText{
+    margin-bottom: 20px;
+}
+
+.main2 .hashTagbtn{
+    margin-bottom: 40px;
+}
+.hashTagbtn ul{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.hashTagbtn button{
+    /* 버튼태그의 박스모델은 box-sizing: border-box로 지정되어있음. */
+    font-size: 18px;
+    padding-bottom: 10px;
+    color: #491d1d;
+}
+.main .hashTagbtn .active button{
+    color: #121212;
+    border-bottom: 2px solid #121212;
+}
+
+.itemList ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.itemList li{ 
+    position: relative;
+    width: 345px;
+}
+
+.itemList li img{
+    margin-bottom: 12px;
+}
+.itemList li img{
+    width: 100%;
+    height: auto;
+}
+
+.itemList li .female{
+    margin-bottom: 4px;
+    color: #121212;
+}
+.itemList li .itemName{
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #121212;
+}
+.itemList li .price{
+    font-size: 16px;
+    color: #121212;
+}
+.itemList li .favo{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.itemList li .favo button{
+    width: 52px;
+    height: 52px;
+    background-image: url(../img/ico-heart-gr-52x52.png);
+    text-indent: -9999999px ;
+}
+
+/* 본문3-기획전 */
+.special{
+    width: 1440px;
+    margin: 0 auto;
+    background-color: burlywood;
+}
+.specialList ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+.specialList li{
+    text-align: center;
+}
+.specialList .photo{
+    margin-bottom: 32px;
+}
+.specialList .photo img{
+    width: 100%;
+    height: auto;
+}
+.specialList .title{
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #121212;
+}
+.specialList .descript{
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: #121212;
+}
+.specialList .btn{
+    width: 158px;
+    margin: 0 auto;
+    border: 1px solid rgb(182, 122, 104);
+    border-radius: 20px;
+    line-height: 38px;
+    color: #121212;
+}
+/* 본문4 추천 스타일 */
+.recommendStyleList{
+    overflow: hidden;
+    margin-bottom: 60px;
+}
+.recommendStyleList ul{
+    display: flex;
+    justify-content: space-between;
+    width: 3340px;
+    padding: 0 20px;
+}
+.recommendStyleList li{
+    width: 400px;
+}
+.recommendStyleList li img{
+    width: 100%;
+    height: auto;
+}
+/* 본문5 커뮤니티 */
+.community{
+    width: 1440px;
+    margin: 0 auto;
+}
+.communityList ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+.communityList li{
+    align-items: center;
+}
+.communityList .photo{
+    margin-bottom: 24px;
+}
+.communityList .photo img{
+    width: 100%;
+    height: auto;
+}
+.communityList .title{
+    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #121212;
+}
+.communityList .descript{
+    margin-bottom: 24px;
+    font-size: 16px;
+    color: #121212;
+}
+.communityList .ex{
+    font-size: 20px;
+    font-weight: 18px;
+    color: #121212;
+}
+.communityList .communityListBtn{
+    width: 120px;
+    margin: auto;
+}
+.communityListBtn a{
+    border: 1px solid saddlebrown;
+    border-radius: 20px;
+    line-height: 38px;
+    display: block;
+    text-align: center;
+    color: #121212;
+}
+/* 메인6 고객님을 위한 추천 상품 */
+.osusume{
+    width: 1440px;
+    margin: 0 auto;
+}
+.osusumeList ul{
+    display: flex;
+    justify-content: space-between;
+}
+.osusumeList li{
+    position: relative;
+    width: 345px;
+}
+.osusumeList .photo img{
+    width: 100%;
+    height: 0 auto;
+}
+.osusumeList .common{
+    font-size: 16px;
+    font-weight: 20px;
+    color: #121212;
+    margin-bottom: 4px;
+}
+.osusumeList .itemName{
+    font-size: 18px;
+    font-weight: 700;
+    color: #121212;
+    margin-bottom: 20px;
+}
+.osusumeList .price{
+    font-size: 16px;
+    font-weight: 66px;
+    color: #121212;
+}
+.osusumeList li .favo{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.osusumeList li .favo button{
+    width: 52px;
+    height: 52px;
+    text-indent: -9999999px;
+    background-image: url(../img/ico-heart-gr-52x52.png);
+}
+.osusumeListBtn a{
+    color: #121212;
+}
+
+.osusumeListBtn{
+    border: 1px solid rgb(187, 130, 72);
+    border-radius: 20px;
+    text-align: center;
+    line-height: 38px;
+    width: 120px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+/* 본문7 인스타 */
+
+.insta{
+    width: 1440px;
+    margin: 0 auto;
+}
+.instaLIST2 ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.acount{
+    color: #121212;
+}
+.acount a{
+    font-size: 28px;
+    font-weight: 700;
+}
+.insta .title{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.instaLIST .title .logo{
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/sns-instar-52x52.png);
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+}
+
+/* 푸터 */
+#footer{
+    position: relative;
+    padding-top: 24px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 80px;
+    background-color: gray;
+}
+.foot1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    background-color: aqua;
+}
+.foot1 .left{
+    display: flex;
+    gap: 120px;
+}
+
+.foo1 .fLogo{
+    width: 80px;
+    height: 25px;
+    background-image: url(../img/logo_nv.png);
+    background-size: 100% auto;
+    text-indent: -9999999px;
+}
+.foo1 .left .ir a{
+    font-size: 16px;
+    font-weight: 700;
+    color: #121212;
+}
+.foot1 .fSns .ul{
+    display: flex;
+}
+.foot1 .fSns li a{
+    display: block;
+    height: 52px;
+    text-indent: -9999999px;
+}
+.foot1 .fSns .insta a{
+    width: 52px;
+    background-image: url(../img/sns-instar-52x52.png);
+}
+.foot1 .fSns .facebook a{
+    width: 40px;
+    background-image: url(../img/sns-facebook-40x52.png);
+}
+.foot1 .fSns .youtube a{
+    width: 52px;
+    background-image: url(../img/sns-youtube-54x52.png);
+}
+.foot1 .fSns .kakao a{
+    width: 52px;
+    background-image: url(../img/sns-kakao-52x52.png);
+}
+.foot2{
+    display: flex;
+    justify-content: space-between;
+    background-color: #491d1d;
+} 
+.foot2 .left{
+    padding-left: 200px;
+}
+.foot2 .fMenu{
+    margin-bottom: 40px;
+}
+.foot2 .fMenu ul .foo2 .fSercurityMenu ul{
+    display: flex;
+}
+.foot2 .fMenu li::after,
+.foot2 .fSercurityMenu li::after{
+    content:"";
+    width: 1px;
+    display: inline-block;
+    height: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #121212;
+    opacity: 0.2;
+}
+.foot2 .fMenu li:last-child::after,
+.foot2 .fSercurityMenu li:last-child::after{
+    display: none;
+}
+.foot2 .fMenu li a,
+.foot2 .fSercurityMenu a{
+    color: #002053;
+}
+.foot2 .fMenu .point a,
+.foot2 .fSercurityMenu .point a{
+    font-weight: 700;
+}
+.foo2 .fInfo{
+    line-height: 26px;
+    color: #121212;
+    opacity: 0.5;
+}
+.foo2 .fInfo a{
+    color: #121212;
+    text-decoration: underline;
+}
+.foot2 .copyright a{
+    margin-left: 16px;
+}
